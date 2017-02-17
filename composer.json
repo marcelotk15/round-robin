@@ -22,7 +22,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Laravel\\RoundRobin": "src/roundrobin/"
+            "Laravel\\RoundRobin\\": "src/roundrobin/"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }

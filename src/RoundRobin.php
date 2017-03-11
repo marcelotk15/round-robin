@@ -5,6 +5,9 @@ use Laravel\RoundRobin\Objects\Schedule;
 
 class RoundRobin
 {
+    /**
+     * @var array Contains teams used to generate schedule
+     */
     protected $teams = [];
     /**
      * @var int|null How many rounds to generate
@@ -124,7 +127,7 @@ class RoundRobin
                         $empty = true;
                     }
                 }
-                if ($empty == true)
+                if ($empty === true)
                 {
                     unset($schedule[$keyA][$keyB]);
                     $empty = false;

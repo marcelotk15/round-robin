@@ -1,5 +1,4 @@
 <?php
-
 namespace Laravel\RoundRobin\Objects;
 
 use ArrayIterator;

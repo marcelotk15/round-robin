@@ -1,7 +1,5 @@
 <?php
-
 namespace Laravel\RoundRobin;
-
 
 use Laravel\RoundRobin\Objects\Schedule;
 
@@ -30,7 +28,7 @@ class RoundRobin
      * Set teams and rounds at construction
      *
      * @param array $teams
-     * @param int|null $rounds
+     * @internal param int|null $rounds
      */
     public function __construct(array $teams = [])
     {

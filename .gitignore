@@ -1,6 +1,7 @@
-/vendor
-/.idea
+tests/
+vendor/
+.idea/
 /.git
 composer.phar
 .DS_Store
-
+composer.lock

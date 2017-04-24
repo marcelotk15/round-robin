@@ -7,7 +7,7 @@
  * Time: 20:25
  */
 
-use Laravel\RoundRobin\RoundRobinFacade as RoundRobin;
+
 use Orchestra\Testbench\TestCase;
 
 class RR_Test extends TestCase
@@ -26,7 +26,7 @@ class RR_Test extends TestCase
 
     public function test_if_instanciate()
     {
-        $instance = RoundRobin::teams(['Arsenal', 'Bayer', 'Barcelona', 'Juventus']);
+        $instance = RoundRobin::from(['Arsenal', 'Bayer', 'Barcelona', 'Juventus']);
         $this->assertInstanceOf(Laravel\RoundRobin\RoundRobin::class, $instance);
     }
 
@@ -34,13 +34,13 @@ class RR_Test extends TestCase
     {
         $this->expectException(Exception::class);
 
-        RoundRobin::teams(['um'])->make();
+        RoundRobin::from(['um'])->make();
 
     }
 
     public function test_if_double_rounds_works()
     {
-        $schedule = RoundRobin::teams(['Arsenal', 'Bayer', 'Barcelona', 'Juventus'])
+        $schedule = RoundRobin::from(['Arsenal', 'Bayer', 'Barcelona', 'Juventus'])
                                 ->doubleRoundRobin()
                                 ->make();
 
@@ -51,7 +51,7 @@ class RR_Test extends TestCase
 
     public function test_if_a_custom_number_of_rounds_works()
     {
-        $schedule = RoundRobin::teams([
+        $schedule = RoundRobin::from([
             'Arsenal',
             'Bayer',
             'Barcelona',
@@ -67,7 +67,7 @@ class RR_Test extends TestCase
 
     public function test_if_do_not_shuffle()
     {
-        $schedule = RoundRobin::teams([
+        $schedule = RoundRobin::from([
             'Arsenal',
             'Bayer',
             'Barcelona',

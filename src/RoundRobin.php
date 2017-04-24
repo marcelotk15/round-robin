@@ -53,7 +53,7 @@ class RoundRobin
      * @return static
      * @throws Exception
      */
-    public static function teams(array $teams)
+    public static function from(array $teams)
     {
         if (empty($teams) || count($teams) < 2) {
             throw new Exception("You need set a team array or a minimum of two teams to make this RoundRobin.");

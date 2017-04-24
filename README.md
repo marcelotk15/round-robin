@@ -17,6 +17,11 @@ or run `composer require marcelotk15/round-robin`
 Laravel\RoundRobin\RoundRobinServiceProvider::class,
 ```
 
+3) Open your `config/app.php` and add the following to the `facades` array:
+```php
+'RoundRobin' => Laravel\RoundRobin\RoundRobinFacade::class,
+```
+
 
 ## Controllers and etc
 ```php
@@ -25,35 +30,43 @@ use Laravel\RoundRobin\RoundRobin;
 
 
 ## Using (Examples)
-Setuping:
+Setuping (without Facade):
 ```php
 $teams = ['Arsenal', 'Atlético de Madrid', 'Borussia', 'Barcelona','Liverpool', 'Bayer 04', 'Real Madrid'];
-$roundRobin = new RoundRobin($teams);
-$roundRobin = $roundRobin->build();
+$schedule = new RoundRobin($teams)->make();
+// or with 'from' static method
+$schedule = RoundRobin::from($teams)->make();
 ```
+
+With a facade:
+```php
+$teams = ['Arsenal', 'Atlético de Madrid', 'Borussia', 'Barcelona','Liverpool', 'Bayer 04', 'Real Madrid'];
+$schedule = RoundRobin::from($teams)->make();
+```
+
 
 Generate a schedule without randomly shuffling the teams using the $shuffle boolean parameter:
 ```php
 $teams = ['Arsenal', 'Atlético de Madrid', 'Borussia', 'Barcelona','Liverpool', 'Bayer 04', 'Real Madrid'];
-$roundRobin = new RoundRobin($teams);
-$rounRobin->doNotShuffle();
-$roundRobin = $roundRobin->build();
+$schedule = RoundRobin::from($teams)->doNotShuffle()->make();
 ```
 
 Use your own seed with the $seed integer parameter for predetermined shuffling:
 ```php
 $teams = ['Arsenal', 'Atlético de Madrid', 'Borussia', 'Barcelona','Liverpool', 'Bayer 04', 'Real Madrid'];
-$roundRobin = new RoundRobin($teams);
-$rounRobin->shuffle(15);
-$roundRobin = $roundRobin->build();
+$schedule = RoundRobin::from($teams)->shuffle(15)->make();
 ```
 
 If you want a double Round-robin:
 ```php
 $teams = ['Arsenal', 'Atlético de Madrid', 'Borussia', 'Barcelona','Liverpool', 'Bayer 04', 'Real Madrid'];
-$roundRobin = new RoundRobin($teams);
-$rounRobin->doubleRoundRobin();
-$roundRobin = $roundRobin->build();
+$schedule = RoundRobin::from($teams)->doubleRoundRobin()->make();
+```
+
+If you want a get a *Schedule* Object:
+```php
+$teams = ['Arsenal', 'Atlético de Madrid', 'Borussia', 'Barcelona','Liverpool', 'Bayer 04', 'Real Madrid'];
+$schedule = RoundRobin::from($teams)->makeSchedule();
 ```
 
 ## License

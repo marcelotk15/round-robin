@@ -1,6 +1,6 @@
 {
-    "name": "marcelotk15/round-robin",
-    "description": "RoundRobin for Laravel.",
+    "name": "jjsquady/round-robin",
+    "description": "RoundRobin for Laravel 5.4+.",
     "keywords": ["laravel", "roundrobin"],
     "license": "MIT",
     "authors": [
@@ -26,6 +26,5 @@
         "psr-4": {
             "Laravel\\RoundRobin\\": "src/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }

@@ -1,26 +1,18 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Jorge
- * Date: 23/04/2017
- * Time: 20:25
- */
-
-
 use Orchestra\Testbench\TestCase;
 
 class RR_Test extends TestCase
 {
     protected function getPackageProviders($app)
     {
-        return [Laravel\RoundRobin\RoundRobinServiceProvider::class];
+        return [Teka\RoundRobin\RoundRobinServiceProvider::class];
     }
 
     protected function getPackageAliases($app)
     {
         return [
-            'RoundRobin' => Laravel\RoundRobin\RoundRobinFacade::class
+            'RoundRobin' => Teka\RoundRobin\RoundRobinFacade::class
         ];
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\RoundRobin\Objects;
+namespace Teka\RoundRobin\Objects;
 
 use ArrayIterator;
 use IteratorAggregate;

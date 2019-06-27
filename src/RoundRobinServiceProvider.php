@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\RoundRobin;
+namespace Teka\RoundRobin;
 
 use Illuminate\Support\ServiceProvider;
 

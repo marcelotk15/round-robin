@@ -1,13 +1,13 @@
 <?php
 
-namespace Laravel\RoundRobin;
+namespace Teka\RoundRobin;
 
 use Exception;
 use Laravel\RoundRobin\Objects\Schedule;
 
 /**
  * Class RoundRobin
- * @package Laravel\RoundRobin
+ * @package Teka\RoundRobin
  */
 class RoundRobin
 {
@@ -15,6 +15,7 @@ class RoundRobin
      * @var array Contains teams used to generate schedule
      */
     private $_teams = [];
+
     /**
      * @var int|null How many rounds to generate
      */
@@ -42,7 +43,7 @@ class RoundRobin
      *
      * @internal param int|null $rounds
      */
-    public function __construct(array $teams = [])
+    public function __construct(array $teams)
     {
         $this->_teams = $teams;
     }
@@ -60,6 +61,7 @@ class RoundRobin
         }
 
         $instance = new static($teams);
+
         return $instance;
     }
 
@@ -71,6 +73,7 @@ class RoundRobin
     public function doubleRoundRobin()
     {
         $this->_rounds = (($count = count($this->_teams)) % 2 === 0 ? $count - 1 : $count) * 2;
+
         return $this;
     }
 
@@ -85,6 +88,7 @@ class RoundRobin
     {
         $this->_shuffle = true;
         $this->_seed    = $seed;
+
         return $this;
     }
 
@@ -97,6 +101,7 @@ class RoundRobin
     {
         $this->_shuffle = false;
         $this->_seed    = null;
+        
         return $this;
     }
 

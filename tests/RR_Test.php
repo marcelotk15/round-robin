@@ -12,7 +12,7 @@ class RR_Test extends TestCase
     protected function getPackageAliases($app)
     {
         return [
-            'RoundRobin' => Teka\RoundRobin\RoundRobinFacade::class
+            'RoundRobin' => Teka\RoundRobin\RoundRobinFacade::class,
         ];
     }
 
@@ -27,7 +27,6 @@ class RR_Test extends TestCase
         $this->expectException(Exception::class);
 
         RoundRobin::from(['um'])->make();
-
     }
 
     public function test_if_double_rounds_works()
@@ -37,8 +36,6 @@ class RR_Test extends TestCase
                                 ->make();
 
         $this->assertEquals(count($schedule), 6);
-
-
     }
 
     public function test_if_a_custom_number_of_rounds_works()
@@ -70,14 +67,14 @@ class RR_Test extends TestCase
             'Real Madrid',
         ])->doNotShuffle()->make();
 
-        $this->assertEquals(array_first($schedule),[
+        $this->assertEquals(array_first($schedule), [
             ['Milan', 'Arsenal'],
             ['PSG', 'Bayer'],
             ['Inter', 'Barcelona'],
             ['Real Madrid', 'Juventus'],
         ]);
 
-        $this->assertEquals(array_slice($schedule,1,1),[[
+        $this->assertEquals(array_slice($schedule, 1, 1), [[
             ['Arsenal', 'PSG'],
             ['Milan', 'Inter'],
             ['Bayer', 'Real Madrid'],

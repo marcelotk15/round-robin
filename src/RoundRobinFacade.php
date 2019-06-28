@@ -10,5 +10,4 @@ class RoundRobinFacade extends Facade
     {
         return 'round-robin';
     }
-
 }

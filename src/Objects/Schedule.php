@@ -10,7 +10,7 @@ class Schedule implements IteratorAggregate
     /**
      * @see make_schedule
      *
-     * @var array An array of rounds, in the format of => $matchups,
+     * @var array An array of rounds, in the format of =>,
      *            where each matchup has only two elements with the two teams as
      *            elements [0] and [1] or for a $teams array with an odd element count,
      *            may have one of these elements as null to signify a bye for the

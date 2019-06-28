@@ -6,8 +6,7 @@ use Exception;
 use Laravel\RoundRobin\Objects\Schedule;
 
 /**
- * Class RoundRobin
- * @package Teka\RoundRobin
+ * Class RoundRobin.
  */
 class RoundRobin
 {
@@ -48,16 +47,17 @@ class RoundRobin
         $this->_teams = $teams;
     }
 
-
     /**
      * @param array $teams
-     * @return static
+     *
      * @throws Exception
+     *
+     * @return static
      */
     public static function from(array $teams)
     {
         if (empty($teams) || count($teams) < 2) {
-            throw new Exception("You need set a team array or a minimum of two teams to make this RoundRobin.");
+            throw new Exception('You need set a team array or a minimum of two teams to make this RoundRobin.');
         }
 
         $instance = new static($teams);
@@ -87,7 +87,7 @@ class RoundRobin
     public function shuffle(int $seed = null)
     {
         $this->_shuffle = true;
-        $this->_seed    = $seed;
+        $this->_seed = $seed;
 
         return $this;
     }
@@ -100,19 +100,20 @@ class RoundRobin
     public function doNotShuffle()
     {
         $this->_shuffle = false;
-        $this->_seed    = null;
-        
+        $this->_seed = null;
+
         return $this;
     }
 
     /**
-     * @return array
      * @throws Exception
+     *
+     * @return array
      */
     public function make()
     {
         if (empty($this->_teams) || count($this->_teams) < 2) {
-            throw new Exception("You need set a team array or a minimum of two teams to make this RoundRobin.");
+            throw new Exception('You need set a team array or a minimum of two teams to make this RoundRobin.');
         }
 
         //Account for odd number of teams by adding a bye
@@ -147,31 +148,32 @@ class RoundRobin
          * factor differentiation included to have intuitive behavior for arrays
          * with an odd number of elements.
          */
-        $factor          = (int)($itemCount % 2 === 0 ? $itemCount / 2 : ($itemCount / 2) + 1);
-        $topRightIndex   = $factor - 1;
-        $topRightItem    = $this->_teams[$topRightIndex];
+        $factor = (int) ($itemCount % 2 === 0 ? $itemCount / 2 : ($itemCount / 2) + 1);
+        $topRightIndex = $factor - 1;
+        $topRightItem = $this->_teams[$topRightIndex];
         $bottomLeftIndex = $factor;
-        $bottomLeftItem  = $this->_teams[$bottomLeftIndex];
+        $bottomLeftItem = $this->_teams[$bottomLeftIndex];
         for ($i = $topRightIndex; $i > 0; $i -= 1) {
             $this->_teams[$i] = $this->_teams[$i - 1];
         }
         for ($i = $bottomLeftIndex; $i < $lastIndex; $i += 1) {
             $this->_teams[$i] = $this->_teams[$i + 1];
         }
-        $this->_teams[1]          = $bottomLeftItem;
+        $this->_teams[1] = $bottomLeftItem;
         $this->_teams[$lastIndex] = $topRightItem;
 
         return $this;
     }
 
     /**
-     * @return Schedule
      * @throws Exception
+     *
+     * @return Schedule
      */
     public function makeSchedule()
     {
         if (empty($this->_teams) || count($this->_teams) < 2) {
-            throw new Exception("You need set a team array or a minimum of two teams to make this RoundRobin.");
+            throw new Exception('You need set a team array or a minimum of two teams to make this RoundRobin.');
         }
 
         return new Schedule($this->make());
@@ -182,7 +184,7 @@ class RoundRobin
      */
 
     /**
-     * do it a Schuffle in current _teams array if shuffle method called
+     * do it a Schuffle in current _teams array if shuffle method called.
      */
     private function doShuffle()
     {
@@ -193,7 +195,7 @@ class RoundRobin
     }
 
     /**
-     * Checks for odd number of items in _teams array
+     * Checks for odd number of items in _teams array.
      */
     private function checkForOdd()
     {
@@ -203,7 +205,8 @@ class RoundRobin
     }
 
     /**
-     * Builds the _schedule array
+     * Builds the _schedule array.
+     *
      * @return $this
      */
     private function buildSchedule()
@@ -220,7 +223,7 @@ class RoundRobin
                 $team1 = $team;
                 $team2 = $this->_teams[$key + $halfTeamCount];
                 //Home-away swapping
-                $matchup                   = $round % 2 === 0 ? [$team1, $team2] : [$team2, $team1];
+                $matchup = $round % 2 === 0 ? [$team1, $team2] : [$team2, $team1];
                 $this->_schedule[$round][] = $matchup;
             }
             $this->rotate();
@@ -231,18 +234,20 @@ class RoundRobin
 
     /**
      * Perform a search for alone items in the _schedule
-     * and corrects with missed rounds
+     * and corrects with missed rounds.
+     *
      * @return $this
      */
     private function cleanSchedule()
     {
         $_schedule = array_map(function ($round) {
             $values = array_map(function ($match) {
-                return array_filter($match, function () use ($match){
+                return array_filter($match, function () use ($match) {
                     return !in_array(null, $match) ?? $match;
                 });
             }, $round);
             $matches = array_filter($values);
+
             return array_values($matches);
         }, $this->_schedule);
 

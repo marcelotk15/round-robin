@@ -2,6 +2,7 @@
 [![Latest Stable Version](https://poser.pugx.org/marcelotk15/round-robin/v/stable)](https://packagist.org/packages/marcelotk15/round-robin) [![Total Downloads](https://poser.pugx.org/marcelotk15/round-robin/downloads)](https://packagist.org/packages/marcelotk15/round-robin)
 [![Latest Unstable Version](https://poser.pugx.org/marcelotk15/round-robin/v/unstable)](https://packagist.org/packages/marcelotk15/round-robin)
 [![License](https://poser.pugx.org/marcelotk15/round-robin/license)](https://packagist.org/packages/marcelotk15/round-robin)
+[![StyleCI](https://github.styleci.io/repos/82237035/shield?branch=master)](https://github.styleci.io/repos/82237035)
 
 Round-Robin is an easy way to create schedule with round-robin(rr) technique. I used the mnito's base code for this. Look here: https://github.com/mnito/round-robin
 
